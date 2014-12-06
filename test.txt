@@ -1,0 +1,45 @@
+Our parsing model is based on a conditional random field model, however, unlike previous TreeCRF work, e.g., (Cohn & Blunsom, 2005; Jousse et al., 2006), we do not assume a particular tree structure, and instead find the most likely structure and labeling.
+Some researchers (Xue & Palmer, 2004; Koomen et al., 2005; Cohn & Blunsom, 2005; Punyakanok et al., 2008; Toutanova et al., 2005, 2008) used a pipelined approach to attack the task.
+They have been used for tree labelling, in XML tree labelling (Jousse et al., 2006) and semantic role labelling tasks (Cohn & Blunsom, 2005).
+Finally, probabilistic models have also been applied to produce the structured output, for example, generative models (Thompson, Levy, & Manning, 2003), sequence tagging with classifiers (M`rquez et al., 2005; Pradhan et al., a  2005), and Conditional Random Fields on tree structures (Cohn & Blunsom 2005).
+As for SRL on news, most researchers used the pipelined approach, i.e., dividing the task into several phases such as argument identification, argument classification, global inference, etc., and conquering them individually (Xue & Palmer, 2004; Koomen et al., 2005; Cohn & Blunsom, 2005; Punyakanok et al., 2008; Toutanova et al., 2005, 2008).
+Although T-CRFs are relatively new models, they have already been applied toseveral NLP tasks, such as semantic role labeling, semantic annotation, word sense disambiguation, image modeling (Cohn & Blunsom, 2005; Tang et al., 2006; Jun et al., 2009; Awasthi et al., 2007).
+The model can be used for tasks like syntactic parsing (Finkel et al., 2008) and semantic role labeling (Cohn & Blunsom, 2005).
+Regarding novel learning paradigms not applied in previous shared tasks, we find Relevant Vector Machine (RVM), which is a kernel-based linear discriminant inside the framework of Sparse Bayesian Learning (Johansson & Nugues, 2005) and Tree Conditional Random Fields (T-CRF) (Cohn & Blunsom, 2005), that extend the sequential CRF model to tree structures.
+We use CRFs as our models for both tasks (Cohn & Blunsom, 2005).
+What’s the story behind Brothers Crisp? 
+
+I’ve always been a maker at heart, but I wanted a challenge. Inspired by my friends at HARDENCO (Hartford Denim Company) who started a denim and cut sew business from scratch, I became obsessed with the idea of creating my own take on hand sewn shoes. 
+Following the old New England tradition, the hand sewing is done, stitch by stitch.
+What goes into each shoe?
+Materials: We source our leathers from the finest tanneries in the world. For us the focus always on quality and responsibility. 
+Equipment: Many of our machines are relics of an era when shoemaking was a massive industry in New England. 
+The machines that were manufactured then are still the very best. They are older than all of us and will probably outlive most of us as well.
+
+What does being a maker mean to you? 
+
+Being a maker is about being in touch with the essence of what makes us human. 
+Looking at a pair of boots that we made with our own hands makes us extremely proud, but getting lost in the process is cathartic and instinctually rewarding. 
+Shoes are a very basic need for survival and being able to express ourselves through such an essential element is a gift.
+
+Who inspires you?
+
+All of the hand sewn shoemakers that paved the way for us: Rancourt, Quoddy, and Russell Moccasin. 
+Our good friends at HARDENCO that let me see first hand that hard work could turn ideas into reality. 
+Makers are everywhere, people that work hard day in and day out to make the everyday things we use and the artists that inspire us, people that cook amazing food, and build and maintain the infrastructure of our society.
+
+One hot day, a thirsty crow flew all over the fields looking for water. 
+For a long time, she could not find any. She felt very weak, almost giving up hope.
+
+Suddenly, she saw a water jug below her. 
+She flew straight down to see if there was any water inside. 
+Yes, she could see some water inside the jug!
+
+The crow tried to push her head into the jug. Sadly, she found that the neck of the jug was too narrow. 
+Then she tried to push the jug down for the water to flow out. She found that the jug was too heavy.
+
+The crow thought hard for a while. 
+Then looking around her, she saw some pebbles. She suddenly had a good idea. 
+She started picking up the pebbles one by one, dropping each into the jug. 
+As more and more pebbles filled the jug, the water level kept rising. 
+Soon it was high enough for the crow to drink. Her plan had worked!

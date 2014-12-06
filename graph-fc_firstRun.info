@@ -1,0 +1,16 @@
+FASTCOMMUNITY_INFERENCE_ALGORITHM
+START-----:	Sat Dec  6 20:51:52 2014
+---FILES--------
+DIRECTORY-:	
+F_IN------:	graph.wpairs
+F_JOINS---:	graph-fc_firstRun.joins
+F_INFO----:	graph-fc_firstRun.info
+---NET_STATS----
+MAXID-----:	35
+NUMNODES--:	36
+NUMEDGES--:	440
+TOTALWT---:	6061
+---MODULARITY---
+MAXQ------:	0.226489
+STEP------:	33
+EXIT------:	Sat Dec  6 20:51:52 2014
