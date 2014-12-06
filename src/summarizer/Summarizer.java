@@ -99,6 +99,7 @@ public class Summarizer {
         }
         modules.add(tempList);
         //*************************Build Lex Rank **********************//
+        List<DummyItem> items = new ArrayList<DummyItem>();
         
     }
     
