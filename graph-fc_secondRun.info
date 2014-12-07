@@ -1,5 +1,5 @@
 FASTCOMMUNITY_INFERENCE_ALGORITHM
-START-----:	Sun Dec  7 09:40:19 2014
+START-----:	Sun Dec  7 09:55:29 2014
 ---FILES--------
 DIRECTORY-:	
 F_IN------:	graph.wpairs
@@ -9,16 +9,11 @@ F_NET-----:	graph-fc_secondRun.wpairs
 F_GROUPS--:	graph-fc_secondRun.groups
 F_GDIST---:	graph-fc_secondRun.hist
 ---NET_STATS----
-MAXID-----:	35
-NUMNODES--:	36
-NUMEDGES--:	440
-TOTALWT---:	6061
----GROUPS-------
-NUMGROUPS-:	6
-MINSIZE---:	1
-MEANSIZE--:	6
-MAXSIZE---:	12
+MAXID-----:	8
+NUMNODES--:	9
+NUMEDGES--:	36
+TOTALWT---:	1027
 ---MODULARITY---
-MAXQ------:	0.226489
-STEP------:	33
-EXIT------:	Sun Dec  7 09:40:19 2014
+MAXQ------:	0.0155997
+STEP------:	6
+EXIT------:	Sun Dec  7 09:55:29 2014

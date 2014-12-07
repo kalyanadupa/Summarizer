@@ -56,7 +56,11 @@ public class Summarizer {
                     similarity[i][j] = sim;
                 }
                 else{
-                    similarity[i][j] = 0.00;
+                    if (i == j) {
+                        similarity[i][j] = 1.00;
+                    } else {
+                        similarity[i][j] = 0.00;
+                    }
                 }    
             }
         }
@@ -100,8 +104,21 @@ public class Summarizer {
         }
         modules.add(tempList);
         //*************************Build Lex Rank **********************//
+        for(i = 0;i < allStrings.size();i++)
+            for(int j = 0;j < allStrings.size();j++) 
+                System.out.println(similarity[i][j]);
         List<DummyItem> items = new ArrayList<DummyItem>();
-        
+        for (i = 0; i < similarity.length; ++i) {
+            items.add(new DummyItem(i, similarity));
+        }
+        LexRankResults<DummyItem> results = LexRanker.rank(items, 0.1, false);
+        String[] names = {"d1s1", "d2s1", "d2s2", "d2s3", "d3s1", "d3s2",
+            "d3s3", "d4s1", "d5s1", "d5s2", "d5s3"};
+        double max = results.scores.get(results.rankedResults.get(0));
+        for (i = 0; i < similarity.length; ++i) {
+            System.out.println(i + ": "
+                    + (results.scores.get(items.get(i)) / max));
+        }
         
     }
     
