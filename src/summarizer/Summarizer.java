@@ -40,7 +40,7 @@ public class Summarizer {
         while ((s = in.readLine()) != null) {
             if (s.compareTo("") != 0) {
                 allStrings.add(s);
-                System.out.println(s);
+//                System.out.println(s);
             }
         }
         PrintWriter writer = new PrintWriter("graph.wpairs", "UTF-8");
@@ -50,7 +50,7 @@ public class Summarizer {
                 double sim = cs.CosineSimilarity_Score(allStrings.get(i), allStrings.get(j));
                 double si = sim *100;
                 int num = (int) si;
-                System.out.println("num = "+ num+ "  sim "+sim);
+//                System.out.println("num = "+ num+ "  sim "+sim);
                 if ((i != j) && (sim != 0) && (!Double.isNaN(sim)) && (sim >= (threshold/100)) && (num > 0)) {
                     writer.println(i+" "+j+" "+ num);
                     similarity[i][j] = sim;
@@ -70,7 +70,7 @@ public class Summarizer {
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
             String line = "";
             while ((line = reader.readLine()) != null) {
-                System.out.println(line.toString());
+//                System.out.println(line.toString());
             }
         }
         if (f.exists() && !f.isDirectory()) {
@@ -79,16 +79,17 @@ public class Summarizer {
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
             String line = "";
             while ((line = reader.readLine()) != null) {
-                System.out.println(line.toString());
+//                System.out.println(line.toString());
             }
         }
         List<List<Integer>> modules = new ArrayList<List<Integer>>();
         BufferedReader in1 = new BufferedReader(new FileReader("graph-fc_secondRun.groups"));
         int i = 0;
         List<Integer> tempList = new ArrayList<Integer>();
+        s = in1.readLine();
         while ((s = in1.readLine()) != null) {    
             if (s.compareTo("") != 0) {
-                if((s.charAt(0) == 'G') && (modules.size() != 0)){
+                if((s.charAt(0) == 'G') ){
                     modules.add(tempList);
                     tempList = new ArrayList<Integer>();
                 }
@@ -100,6 +101,7 @@ public class Summarizer {
         modules.add(tempList);
         //*************************Build Lex Rank **********************//
         List<DummyItem> items = new ArrayList<DummyItem>();
+        
         
     }
     
