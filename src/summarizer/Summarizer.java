@@ -111,15 +111,35 @@ public class Summarizer {
         for (i = 0; i < similarity.length; ++i) {
             items.add(new DummyItem(i, similarity));
         }
-        LexRankResults<DummyItem> results = LexRanker.rank(items, 0.1, false);
+        LexRankResults<DummyItem> results = LexRanker.rank(items, 0.2, true);
         String[] names = {"d1s1", "d2s1", "d2s2", "d2s3", "d3s1", "d3s2",
             "d3s3", "d4s1", "d5s1", "d5s2", "d5s3"};
         double max = results.scores.get(results.rankedResults.get(0));
+        System.out.println("Max is "+max + "similarity "+ similarity.length);
         for (i = 0; i < similarity.length; ++i) {
+            
             System.out.println(i + ": "
                     + (results.scores.get(items.get(i)) / max));
-        }
+        }   
         
+        //*************************Another Algo for Lex Rank **********************//
+        
+        double[] sum = new double[similarity.length]; 
+        int[] degree = new int[similarity.length];
+
+        for (i = 0; i < similarity.length; i++) {
+            sum[i] = 0;
+            for (int j = 1; j < similarity.length; j++) {
+                if (similarity[i][j] > threshold/100) {
+                    sum[i] = similarity[i][j] + sum[i];
+                    degree[i]++;
+                }
+            }
+        }
+        System.out.println("** The ranking is ** ");
+        for (i = 0; i < similarity.length; i++) {
+            System.out.println("for " + i + ": " + sum[i] / degree[i] + "  sum : " + sum[i] + " degree : " + degree[i]);
+        }
     }
     
 }
