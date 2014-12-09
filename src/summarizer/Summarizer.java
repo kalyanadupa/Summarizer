@@ -140,6 +140,28 @@ public class Summarizer {
         for (i = 0; i < similarity.length; i++) {
             System.out.println("for " + i + ": " + sum[i] / degree[i] + "  sum : " + sum[i] + " degree : " + degree[i]);
         }
+        
+        //*************************Generating Output **********************//
+        int[] selected = new int[modules.size()];
+        i = 0;
+        for(List<Integer> tempL : modules){
+            selected[i] = tempL.get(0);
+            System.out.println("tempL[0] = "+ tempL.get(0) );
+            System.out.println("sum = "+ sum[tempL.get(0)]);
+            System.out.println("degree = "+ degree[tempL.get(0)]);
+            double x = sum[tempL.get(0)]/degree[tempL.get(0)];
+            for(Integer y : tempL){
+                if((sum[y]/degree[y]) > x){
+                    x = (sum[y]/degree[y]);
+                    selected[i] = y;
+                }
+            }
+            i++;
+        }
+        for(i = 0;i < selected.length;i++){
+            System.out.println(selected[i]);
+        }
+        
     }
     
 }
