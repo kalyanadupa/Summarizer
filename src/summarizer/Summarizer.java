@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -78,7 +79,7 @@ public class Summarizer {
             }
         }
         if (f.exists() && !f.isDirectory()) {
-            Process process = Runtime.getRuntime().exec("./FastCommunity_wMH -f graph.wpairs -l secondRun -c 30");
+            Process process = Runtime.getRuntime().exec("./FastCommunity_wMH -f graph.wpairs -l secondRun -c 6");
             process.waitFor();
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
             String line = "";
@@ -104,9 +105,11 @@ public class Summarizer {
         }
         modules.add(tempList);
         //*************************Build Lex Rank **********************//
+        /*
         for(i = 0;i < allStrings.size();i++)
             for(int j = 0;j < allStrings.size();j++) 
                 System.out.println(similarity[i][j]);
+        */
         List<DummyItem> items = new ArrayList<DummyItem>();
         for (i = 0; i < similarity.length; ++i) {
             items.add(new DummyItem(i, similarity));
@@ -115,13 +118,14 @@ public class Summarizer {
         String[] names = {"d1s1", "d2s1", "d2s2", "d2s3", "d3s1", "d3s2",
             "d3s3", "d4s1", "d5s1", "d5s2", "d5s3"};
         double max = results.scores.get(results.rankedResults.get(0));
-        System.out.println("Max is "+max + "similarity "+ similarity.length);
+//        System.out.println("Max is "+max + "similarity "+ similarity.length);
+        /*
         for (i = 0; i < similarity.length; ++i) {
             
             System.out.println(i + ": "
                     + (results.scores.get(items.get(i)) / max));
         }   
-        
+        */
         //*************************Another Algo for Lex Rank **********************//
         
         double[] sum = new double[similarity.length]; 
@@ -135,20 +139,17 @@ public class Summarizer {
                     degree[i]++;
                 }
             }
-        }
+        }/*
         System.out.println("** The ranking is ** ");
         for (i = 0; i < similarity.length; i++) {
             System.out.println("for " + i + ": " + sum[i] / degree[i] + "  sum : " + sum[i] + " degree : " + degree[i]);
         }
-        
+        */
         //*************************Generating Output **********************//
         int[] selected = new int[modules.size()];
         i = 0;
         for(List<Integer> tempL : modules){
             selected[i] = tempL.get(0);
-            System.out.println("tempL[0] = "+ tempL.get(0) );
-            System.out.println("sum = "+ sum[tempL.get(0)]);
-            System.out.println("degree = "+ degree[tempL.get(0)]);
             double x = sum[tempL.get(0)]/degree[tempL.get(0)];
             for(Integer y : tempL){
                 if((sum[y]/degree[y]) > x){
@@ -158,8 +159,9 @@ public class Summarizer {
             }
             i++;
         }
+        Arrays.sort(selected);
         for(i = 0;i < selected.length;i++){
-            System.out.println(selected[i]);
+            System.out.println(allStrings.get(i));
         }
         
     }
