@@ -30,6 +30,8 @@ public class Summarizer {
         // TODO code application logic here
         String fileName = "test.txt";  // Input fileName 
         int threshold = 10; // Input percentage threshold 
+        
+        int noLines = 50; 
        
         //*************************File Name as Input**********************//
         
@@ -66,44 +68,73 @@ public class Summarizer {
             }
         }
         writer.close();
+        noLines = (int) Math.floor(allStrings.size() * (float)noLines/100);
         //*************************Finding communities**********************//
         File f = new File("FastCommunity_wMH");
         //./FastCommunity_wMH -f current.wpairs -l firstRun
         if (f.exists() && !f.isDirectory()) {
             Process process = Runtime.getRuntime().exec("./FastCommunity_wMH -f graph.wpairs -l firstRun");
             process.waitFor();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            String line = "";
-            while ((line = reader.readLine()) != null) {
-//                System.out.println(line.toString());
-            }
+            
         }
-        if (f.exists() && !f.isDirectory()) {
-            Process process = Runtime.getRuntime().exec("./FastCommunity_wMH -f graph.wpairs -l secondRun -c 6");
-            process.waitFor();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            String line = "";
-            while ((line = reader.readLine()) != null) {
-//                System.out.println(line.toString());
-            }
-        }
-        List<List<Integer>> modules = new ArrayList<List<Integer>>();
-        BufferedReader in1 = new BufferedReader(new FileReader("graph-fc_secondRun.groups"));
         int i = 0;
+        List<List<Integer>> modules = new ArrayList<List<Integer>>();
+        int selectedIndex = 0;
+        int minModuleSize = 9999;
+        for(int k = 0; k <allStrings.size(); k++){
+            if (f.exists() && !f.isDirectory()) {
+                Process process = Runtime.getRuntime().exec("./FastCommunity_wMH -f graph.wpairs -l secondRun -c "+k);
+                process.waitFor();
+            }
+            
+            BufferedReader in1 = new BufferedReader(new FileReader("graph-fc_secondRun.groups"));
+
+            List<Integer> tempList = new ArrayList<Integer>();
+            s = in1.readLine();
+            while ((s = in1.readLine()) != null) {
+                if (s.compareTo("") != 0) {
+                    if ((s.charAt(0) == 'G')) {
+                        modules.add(tempList);
+                        tempList = new ArrayList<Integer>();
+                    } else {
+                        tempList.add(Integer.valueOf(s));
+                    }
+                }
+            }
+            modules.add(tempList);
+            System.out.println(k+ "-> Size of modules is "+modules.size());
+            if(Math.abs(modules.size() - noLines) < minModuleSize){
+               minModuleSize = Math.abs(modules.size() - noLines);
+               selectedIndex = k;
+            }
+            modules = new ArrayList<List<Integer>>();
+        }
+        
+        System.out.println("no Lines = "+ noLines + " minModuleSize "+ minModuleSize + " selectedIndex " + selectedIndex);
+        
+        if (f.exists() && !f.isDirectory()) {
+            Process process = Runtime.getRuntime().exec("./FastCommunity_wMH -f graph.wpairs -l secondRun -c " + selectedIndex);
+            process.waitFor();
+        }
+
+        BufferedReader in1 = new BufferedReader(new FileReader("graph-fc_secondRun.groups"));
+
         List<Integer> tempList = new ArrayList<Integer>();
         s = in1.readLine();
-        while ((s = in1.readLine()) != null) {    
+        while ((s = in1.readLine()) != null) {
             if (s.compareTo("") != 0) {
-                if((s.charAt(0) == 'G') ){
+                if ((s.charAt(0) == 'G')) {
                     modules.add(tempList);
                     tempList = new ArrayList<Integer>();
-                }
-                else{
+                } else {
                     tempList.add(Integer.valueOf(s));
                 }
             }
         }
         modules.add(tempList);
+        
+        
+        
         //*************************Build Lex Rank **********************//
         /*
         for(i = 0;i < allStrings.size();i++)
