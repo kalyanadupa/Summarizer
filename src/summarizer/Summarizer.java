@@ -31,7 +31,7 @@ public class Summarizer {
         String fileName = "test.txt";  // Input fileName 
         int threshold = 10; // Input percentage threshold 
         
-        int noLines = 50; 
+        int noLines = 10; 
        
         //*************************File Name as Input**********************//
         
@@ -192,7 +192,7 @@ public class Summarizer {
         }
         Arrays.sort(selected);
         for(i = 0;i < selected.length;i++){
-            System.out.println(allStrings.get(i));
+            System.out.println(allStrings.get(selected[i]));
         }
         
     }
