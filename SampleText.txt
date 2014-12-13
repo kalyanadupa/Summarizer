@@ -1,0 +1,102 @@
+Preface
+This book provides a comprehensive introduction to the modern study of computer
+algorithms. It presents many algorithms and covers them in considerable depth, yet
+makes their design and analysis accessible to all levels of readers. We have tried to
+keep explanations elementary without sacrificing depth of coverage or mathemati-
+cal rigor.
+Each chapter presents an algorithm, a design technique, an application area, or a
+related topic. Algorithms are described in English and in a “pseudocode” designed
+to be readable by anyone who has done a little programming. The book contains
+over 230 figures illustrating how the algorithms work. Since we emphasize effi-
+ciency as a design criterion, we include careful analyses of the running times of all
+our algorithms.
+The text is intended primarily for use in undergraduate or graduate courses in
+algorithms or data structures. Because it discusses engineering issues in algorithm
+design, as well as mathematical aspects, it is equally well suited for self-study by
+technical professionals.
+In this, the second edition, we have updated the entire book. The changes range
+from the addition of new chapters to the rewriting of individual sentences.
+To the teacher
+This book is designed to be both versatile and complete. You will find it useful for
+a variety of courses, from an undergraduate course in data structures up through
+a graduate course in algorithms. Because we have provided considerably more
+material than can fit in a typical one-term course, you should think of the book as
+a “buffet” or “smorgasbord” from which you can pick and choose the material that
+best supports the course you wish to teach.
+You should find it easy to organize your course around just the chapters you
+need. We have made chapters relatively self-contained, so that you need not worry
+about an unexpected and unnecessary dependence of one chapter on another. Each
+chapter presents the easier material first and the more difficult material later, with
+xiv Preface
+section boundaries marking natural stopping points. In an undergraduate course,
+you might use only the earlier sections from a chapter; in a graduate course, you
+might cover the entire chapter.
+We have included over 920 exercises and over 140 problems. Each section ends
+with exercises, and each chapter ends with problems. The exercises are generally
+short questions that test basic mastery of the material. Some are simple self-check
+thought exercises, whereas others are more substantial and are suitable as assigned
+homework. The problems are more elaborate case studies that often introduce new
+material; they typically consist of several questions that lead the student through
+the steps required to arrive at a solution.
+We have starred () the sections and exercises that are more suitable for graduate
+students than for undergraduates. A starred section is not necessarily more diffi-
+cult than an unstarred one, but it may require an understanding of more advanced
+mathematics. Likewise, starred exercises may require an advanced background or
+more than average creativity.
+To the student
+We hope that this textbook provides you with an enjoyable introduction to the
+field of algorithms. We have attempted to make every algorithm accessible and
+interesting. To help you when you encounter unfamiliar or difficult algorithms, we
+describe each one in a step-by-step manner. We also provide careful explanations
+of the mathematics needed to understand the analysis of the algorithms. If you
+already have some familiarity with a topic, you will find the chapters organized so
+that you can skim introductory sections and proceed quickly to the more advanced
+material.
+This is a large book, and your class will probably cover only a portion of its
+material. We have tried, however, to make this a book that will be useful to you
+now as a course textbook and also later in your career as a mathematical desk
+reference or an engineering handbook.
+What are the prerequisites for reading this book?
+• You should have some programming experience. In particular, you should un-
+derstand recursive procedures and simple data structures such as arrays and
+linked lists.
+• You should have some facility with proofs by mathematical induction. A few
+portions of the book rely on some knowledge of elementary calculus. Beyond
+that, Parts I and VIII of this book teach you all the mathematical techniques you
+will need.
+Preface xv
+To the professional
+The wide range of topics in this book makes it an excellent handbook on algo-
+rithms. Because each chapter is relatively self-contained, you can focus in on the
+topics that most interest you.
+Most of the algorithms we discuss have great practical utility. We therefore
+address implementation concerns and other engineering issues. We often provide
+practical alternatives to the few algorithms that are primarily of theoretical interest.
+If you wish to implement any of the algorithms, you will find the translation of
+our pseudocode into your favorite programming language a fairly straightforward
+task. The pseudocode is designed to present each algorithm clearly and succinctly.
+Consequently, we do not address error-handling and other software-engineering is-
+sues that require specific assumptions about your programming environment. We
+attempt to present each algorithm simply and directly without allowing the idiosyn-
+crasies of a particular programming language to obscure its essence.
+To our colleagues
+We have supplied an extensive bibliography and pointers to the current literature.
+Each chapter ends with a set of “chapter notes” that give historical details and
+references. The chapter notes do not provide a complete reference to the whole
+field of algorithms, however. Though it may be hard to believe for a book of this
+size, many interesting algorithms could not be included due to lack of space.
+Despite myriad requests from students for solutions to problems and exercises,
+we have chosen as a matter of policy not to supply references for problems and
+exercises, to remove the temptation for students to look up a solution rather than to
+find it themselves.
+Changes for the second edition
+What has changed between the first and second editions of this book? Depending
+on how you look at it, either not much or quite a bit.
+A quick look at the table of contents shows that most of the first-edition chapters
+and sections appear in the second edition. We removed two chapters and a handful
+of sections, but we have added three new chapters and four new sections apart from
+these new chapters. If you were to judge the scope of the changes by the table of
+contents, you would likely conclude that the changes were modest.
+The changes go far beyond what shows up in the table of contents, however.
+In no particular order, here is a summary of the most significant changes for the
+second edition:

@@ -102,7 +102,7 @@ public class Summarizer {
                 }
             }
             modules.add(tempList);
-            System.out.println(k+ "-> Size of modules is "+modules.size());
+            //System.out.println(k+ "-> Size of modules is "+modules.size() + " Minmodulesize = " + minModuleSize);
             if(Math.abs(modules.size() - noLines) < minModuleSize){
                minModuleSize = Math.abs(modules.size() - noLines);
                selectedIndex = k;
