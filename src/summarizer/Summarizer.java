@@ -32,7 +32,7 @@ public class Summarizer {
         int noLines = 50; // output percentage  
         boolean pdfB = true; //If the input is pdf set to true else false
         int pdfStartPage = 14; // Starting page of the pdf
-        int pdfEndPage = 22;   // till Page of extraction 
+        int pdfEndPage = 16;   // till Page of extraction 
         
         
         List<String> allStrings ;
