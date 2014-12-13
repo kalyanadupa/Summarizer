@@ -7,6 +7,8 @@
 package summarizer;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import org.apache.pdfbox.pdmodel.*;
 import org.apache.pdfbox.util.*;
 
@@ -19,32 +21,47 @@ import org.apache.pdfbox.util.*;
 public class pdfReader {
 
     public static void main(String[] args) {
+        
+    }
+    
+    List<String> parsePdf(String filePath,int startPage, int endPage){
         PDDocument pd;
         BufferedWriter wr;
+        List<String> outputStrings = new ArrayList<String>();
         try {
-            File input = new File("Algorithms.pdf");  // The PDF file from where you would like to extract
+            File input = new File(filePath);  // The PDF file from where you would like to extract
             File output = new File("SampleText.txt"); // The text file where you are going to store the extracted data
             pd = PDDocument.load(input);
             System.out.println(pd.getNumberOfPages());
-            System.out.println(pd.isEncrypted());
-            pd.save("CopyOfInvoice.pdf"); // Creates a copy called "CopyOfInvoice.pdf"
+            if(pd.isEncrypted()){
+                System.out.println("Error PDF is encrypted, cannot Parse"); 
+            }
             PDFTextStripper stripper = new PDFTextStripper();
-            stripper.setStartPage(14); //Start extracting from page 3
-            stripper.setEndPage(16); //Extract till page 5
+            stripper.setStartPage(startPage); //Start extracting from page 14
+            stripper.setEndPage(endPage); //Extract till page 16
             wr = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(output)));
             stripper.writeText(pd, wr);
             if (pd != null) {
                 pd.close();
             }
-            // I use close() to flush the stream.
             wr.close();
             BufferedReader in = new BufferedReader(new FileReader("SampleText.txt"));
             String s;
-            while((s = in.readLine()) != null){
-                System.out.println(s);
+            StringBuilder sb = new StringBuilder();
+            while ((s = in.readLine()) != null) {
+                sb.append(" ");
+                sb.append(s);
             }
+            s = sb.toString();
+            String[] tokenizedStrings = s.split("\\.");
+            for (String x : tokenizedStrings) {
+                if(x.compareTo("") != 0)
+                    outputStrings.add(x);
+            }
+            //System.out.println(s);
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return outputStrings;
     }
 }

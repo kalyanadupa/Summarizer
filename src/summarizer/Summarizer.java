@@ -28,24 +28,40 @@ public class Summarizer {
      */
     public static void main(String[] args) throws FileNotFoundException, IOException, InterruptedException {
         // TODO code application logic here
-        String fileName = "test.txt";  // Input fileName 
-        int threshold = 10; // Input percentage threshold 
+        String fileName = "Algorithms.pdf";  // Input fileName 
+        int noLines = 50; // output percentage  
+        boolean pdfB = true; //If the input is pdf set to true else false
+        int pdfStartPage = 14; // Starting page of the pdf
+        int pdfEndPage = 22;   // till Page of extraction 
         
-        int noLines = 10; 
+        
+        List<String> allStrings ;
+        int threshold = 10; 
+        BufferedReader in;
+        String s = "";
        
         //*************************File Name as Input**********************//
         
-        BufferedReader in = new BufferedReader(new FileReader(fileName));
-        //*************************Finding Cosine Similary Graph**********************//
-        CosineSimilarity cs = new CosineSimilarity();
-        List<String> allStrings = new ArrayList<String>();
-        String s = "";
-        while ((s = in.readLine()) != null) {
-            if (s.compareTo("") != 0) {
-                allStrings.add(s);
-//                System.out.println(s);
+        if(pdfB){
+            pdfReader pd = new pdfReader();
+            allStrings = pd.parsePdf(fileName,pdfStartPage,pdfEndPage);
+        }
+        else{
+            in = new BufferedReader(new FileReader(fileName));
+            allStrings = new ArrayList<String>();
+
+            while ((s = in.readLine()) != null) {
+                if (s.compareTo("") != 0) {
+                    allStrings.add(s);
+                }
             }
         }
+           
+        
+        
+        //*************************Finding Cosine Similary Graph**********************//
+        CosineSimilarity cs = new CosineSimilarity();
+        
         PrintWriter writer = new PrintWriter("graph.wpairs", "UTF-8");
         double[][] similarity =  new double[allStrings.size()][allStrings.size()];
         for (int i = 0; i < (allStrings.size()); i++) {
