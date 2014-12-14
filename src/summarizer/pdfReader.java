@@ -20,9 +20,7 @@ import org.apache.pdfbox.util.*;
 
 public class pdfReader {
 
-    public static void main(String[] args) {
-        
-    }
+    
     
     List<String> parsePdf(String filePath,int startPage, int endPage){
         PDDocument pd;

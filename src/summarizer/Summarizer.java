@@ -97,7 +97,7 @@ public class Summarizer {
         List<List<Integer>> modules = new ArrayList<List<Integer>>();
         int selectedIndex = 0;
         int minModuleSize = 9999;
-        for(int k = 0; k <allStrings.size(); k++){
+        for(int k = 1; k <allStrings.size(); k++){
             if (f.exists() && !f.isDirectory()) {
                 Process process = Runtime.getRuntime().exec("./FastCommunity_wMH -f graph.wpairs -l secondRun -c "+k);
                 process.waitFor();
@@ -118,7 +118,7 @@ public class Summarizer {
                 }
             }
             modules.add(tempList);
-            //System.out.println(k+ "-> Size of modules is "+modules.size() + " Minmodulesize = " + minModuleSize);
+            //System.out.println(k+ "-> Size of modules is "+modules.size() + " Minmodulesize = " + minModuleSize + " no Lines = "+ noLines + " selectedIndex " + selectedIndex);
             if(Math.abs(modules.size() - noLines) < minModuleSize){
                minModuleSize = Math.abs(modules.size() - noLines);
                selectedIndex = k;
@@ -208,7 +208,7 @@ public class Summarizer {
         }
         Arrays.sort(selected);
         for(i = 0;i < selected.length;i++){
-            System.out.println(allStrings.get(selected[i]));
+            System.out.println(selected[i]+" -> "+ allStrings.get(selected[i]));
         }
         
     }
