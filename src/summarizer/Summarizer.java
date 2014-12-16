@@ -13,6 +13,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -30,7 +31,9 @@ public class Summarizer {
         // TODO code application logic here
         String fileName = "Algorithms.pdf";  // Input fileName 
         int noLines = 50; // output percentage  
-        boolean pdfB = true; //If the input is pdf set to true else false
+        boolean pdfB = false; //If the input is pdf set to true else false
+        boolean urlB = true;
+        URL u = new URL("http://timesofindia.indiatimes.com/india/Modis-drug-speech-puts-Punjab-government-in-a-spot/articleshow/45516872.cms");
         int pdfStartPage = 14; // Starting page of the pdf
         int pdfEndPage = 16;   // till Page of extraction 
         
@@ -42,11 +45,19 @@ public class Summarizer {
        
         //*************************File Name as Input**********************//
         
+        
+        
+        
         if(pdfB){
             pdfReader pd = new pdfReader();
             allStrings = pd.parsePdf(fileName,pdfStartPage,pdfEndPage);
         }
+        else if(urlB){
+            URLextractor urlE = new URLextractor();
+            allStrings = urlE.textFromURL(u); 
+        }
         else{
+            System.out.println("Don't come here~ ");
             in = new BufferedReader(new FileReader(fileName));
             allStrings = new ArrayList<String>();
 
