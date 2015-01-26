@@ -22,7 +22,7 @@ public class pdfReader {
 
     
     
-    List<String> parsePdf(String filePath,int startPage, int endPage){
+    List<String> parsePdf(String filePath,int startPage, int endPage,boolean newLine){
         PDDocument pd;
         BufferedWriter wr;
         List<String> outputStrings = new ArrayList<String>();
@@ -51,7 +51,12 @@ public class pdfReader {
                 sb.append(s);
             }
             s = sb.toString();
-            String[] tokenizedStrings = s.split("\\.");
+            String[] tokenizedStrings ;
+            if (newLine) {
+                tokenizedStrings = s.split("\\r?\\n");
+            } else {
+                tokenizedStrings = s.split("\\.");
+            }            
             for (String x : tokenizedStrings) {
                 if(x.compareTo("") != 0)
                     outputStrings.add(x);
