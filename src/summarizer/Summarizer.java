@@ -31,11 +31,12 @@ public class Summarizer {
     public static void main(String[] args) throws FileNotFoundException, IOException, InterruptedException, BoilerpipeProcessingException {
         // TODO code application logic here
         String fileName = "Algorithms.pdf";  // Input fileName 
-        int noLines = 30; // output percentage  
+        int noLines = 50; // output percentage  
         boolean pdfB = false; //If the input is pdf set to true else false
         boolean urlB = true;
-        boolean newLine = true; // if we need to chunk it based on new line.
-        URL url1 = new URL("http://en.wikipedia.org/wiki/Paulo_Coelho");
+        boolean newLine = false; // if we need to chunk it based on new line.
+        //URL url1 = new URL("http://en.wikipedia.org/wiki/Paulo_Coelho");
+        URL url1 = new URL("http://timesofindia.indiatimes.com/india/Obama-ends-Republic-Day-with-4-billion-pledge/articleshow/46022759.cms?utm_source=facebook.com&utm_medium=referral&utm_campaign=TOI");
         int pdfStartPage = 14; // Starting page of the pdf
         int pdfEndPage = 16;   // till Page of extraction 
         
@@ -52,12 +53,13 @@ public class Summarizer {
             
             String boilerExtractor = ArticleExtractor.INSTANCE.getText(url1);
 
-            String regex = "\\[|\\]";
-            String regex2 = "\\[\\w+\\]";
-            boilerExtractor = boilerExtractor.replaceAll(regex2, "");
+            String regex = "\\[\\w+\\]";
+            boilerExtractor = boilerExtractor.replaceAll(regex, "");
             String[] tokenizedStrings;
-            if(newLine)
+            if(newLine){
+                tokenizedStrings = boilerExtractor.split("\\.");
                 tokenizedStrings = boilerExtractor.split("\\r?\\n");
+            }    
             else
                 tokenizedStrings = boilerExtractor.split("\\.");
             
