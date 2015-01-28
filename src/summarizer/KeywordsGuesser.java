@@ -150,7 +150,9 @@ public class KeywordsGuesser {
     }
 
     public static void main(String[] args) throws IOException {
-        List<Keyword> xyz = guessFromString("https://en.wikipedia.org/wiki/Java_%28programming_language%29");
+        List<Keyword> xyz = guessFromString("Java is a general-purpose computer programming language that is concurrent, class-based, object-oriented,[11] and specifically designed to have as few implementation dependencies as possible. It is intended to let application developers \"write once, run anywhere\" (WORA),[12] meaning that code that runs on one platform does not need to be recompiled to run on another.[13] Java applications are typically compiled to bytecode that can run on any Java virtual machine (JVM) regardless of computer architecture. Java is, as of 2015, one of the most popular programming languages in use, particularly for client-server web applications, with a reported 9 million developers.[14][15] Java was originally developed by James Gosling at Sun Microsystems (which has since merged into Oracle Corporation) and released in 1995 as a core component of Sun Microsystems' Java platform. The language derives much of its syntax from C and C++, but it has fewer low-level facilities than either of them.\n" +
+"\n" +
+"The original and reference implementation Java compilers, virtual machines, and class libraries were originally released by Sun under proprietary licences. As of May 2007, in compliance with the specifications of the Java Community Process, Sun relicensed most of its Java technologies under the GNU General Public License. Others have also developed alternative implementations of these Sun technologies, such as the GNU Compiler for Java (bytecode compiler), GNU Classpath (standard libraries), and IcedTea-Web (browser plugin for applets).");
         for (Keyword x : xyz) {
             System.out.println(x.terms + "\t" + x.frequency);
         }
