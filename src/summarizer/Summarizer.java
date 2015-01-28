@@ -17,7 +17,9 @@ import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
+import static summarizer.KeywordsGuesser.guessFromString;
 
 /**
  *
@@ -90,6 +92,21 @@ public class Summarizer {
         CosineSimilarity cs = new CosineSimilarity();
 
         PrintWriter writer = new PrintWriter("graph.wpairs", "UTF-8");
+        List<String> tempStrings = new ArrayList<String>();
+        StringBuilder sb = new StringBuilder();
+        
+        for(String str: allStrings){
+            if(str.length() >5){
+                str = str.replaceAll("[\\p{Punct}&&[^'-.]]+", " ");
+                tempStrings.add(str);
+                sb.append(" "+str);
+            }
+        }
+        List<KeywordsGuesser.Keyword> xyz = guessFromString(sb.toString());
+        for (KeywordsGuesser.Keyword x : xyz) {
+            System.out.println(x.terms + "\t" + x.frequency);
+        }
+        allStrings = tempStrings;
         double[][] similarity = new double[allStrings.size()][allStrings.size()];
         for (int i = 0; i < (allStrings.size()); i++) {
             for (int j = i; j < (allStrings.size()); j++) {
