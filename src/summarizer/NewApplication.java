@@ -176,13 +176,13 @@ public class NewApplication extends javax.swing.JFrame {
             .addGroup(IntroPanelLayout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addComponent(Heading, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70)
+                .addGap(82, 82, 82)
                 .addComponent(StartButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(HelpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addComponent(ExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addContainerGap(144, Short.MAX_VALUE))
         );
 
         getContentPane().add(IntroPanel, "card2");
@@ -638,6 +638,7 @@ public class NewApplication extends javax.swing.JFrame {
         //boolean pdfB = false; //If the input is pdf set to true else false
         int pdfStartPage = 14; // Starting page of the pdf
         int pdfEndPage = 16;   // till Page of extraction 
+        boolean newLine = true;
         
         
 //        List<String> allStrings ;
@@ -692,33 +693,7 @@ public class NewApplication extends javax.swing.JFrame {
         SummaryInputTextArea.setText(inputSummary);
         
         
-        //*************************File Name as Input**********************//
-        /*
-        if(pdfB){
-            pdfReader pd = new pdfReader();
-            allStrings = pd.parsePdf(fileName,pdfStartPage,pdfEndPage);
-        }
-        else{
-            try {
-                in = new BufferedReader(new FileReader(fileName));
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(NewApplication.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            allStrings = new ArrayList<String>();
-
-            try {
-                while ((s = in.readLine()) != null) {
-                    if (s.compareTo("") != 0) {
-                        allStrings.add(s);
-                    }
-                }
-            } catch (IOException ex) {
-                Logger.getLogger(NewApplication.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-           
-        */
-        
+       
         //*************************Finding Cosine Similary Graph**********************//
         CosineSimilarity cs = new CosineSimilarity();
         
